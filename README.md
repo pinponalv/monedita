@@ -11,5 +11,8 @@ It allows you to register financial transactions and consult them
 - Maven
 
 ## 🚧 Project Status
-This project is functional and under active development
- 
+This project is functional and under active development.
+Planned features
+- Add a frontend using react and typescript
+- Add authentication with Spring Security
+
