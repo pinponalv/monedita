@@ -12,6 +12,7 @@ It allows you to register financial transactions and consult them
 
 ## 🚧 Project Status
 This project is functional and under active development.
+
 Planned features
 - Add a frontend using react and typescript
 - Add authentication with Spring Security
