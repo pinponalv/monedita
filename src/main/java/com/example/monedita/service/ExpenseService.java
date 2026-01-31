@@ -3,6 +3,7 @@ package com.example.monedita.service;
 import com.example.monedita.exceptions.ExpenseNotFoundException;
 import com.example.monedita.model.Expense;
 import com.example.monedita.model.enums.CategoryEnum;
+import com.example.monedita.model.enums.PaymentMethodEnum;
 import com.example.monedita.repository.IExpenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,9 +46,15 @@ public class ExpenseService implements IExpenseService {
             throw new IllegalArgumentException("The expense date cannot be in the future");
         }
 
-        //o actualizar los campos con set
+        //actualizando campos
+        existingExpense.setDescription(expense.getDescription());
+        existingExpense.setAmount(expense.getAmount());
+        existingExpense.setCategory(expense.getCategory());
+        existingExpense.setDate(expense.getDate());
+        existingExpense.setPaymentMethod(expense.getPaymentMethod());
 
-        return expenseRepository.save(expense);
+
+        return expenseRepository.save(existingExpense);
     }
 
     @Override
@@ -59,5 +66,15 @@ public class ExpenseService implements IExpenseService {
     @Override
     public List<Expense> getExpensesByCategory(CategoryEnum category) {
         return expenseRepository.getExpensesByCategory(category);
+    }
+
+    @Override
+    public List<Expense> getExpensesByDate(LocalDate date) {
+        return expenseRepository.getExpensesByDate(date);
+    }
+
+    @Override
+    public List<Expense> getExpensesByPaymentMethod(PaymentMethodEnum paymentMethod) {
+        return expenseRepository.getExpensesByPaymentMethod(paymentMethod);
     }
 }

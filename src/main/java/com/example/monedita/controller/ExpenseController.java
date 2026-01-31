@@ -3,6 +3,7 @@ package com.example.monedita.controller;
 
 import com.example.monedita.model.Expense;
 import com.example.monedita.model.enums.CategoryEnum;
+import com.example.monedita.model.enums.PaymentMethodEnum;
 import com.example.monedita.service.IExpenseService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -47,7 +49,7 @@ public class ExpenseController {
         return ResponseEntity.ok(updatedExpense);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<Expense> deleteExpenseById(@PathVariable Long id){
         expenseService.deleteExpenseById(id);
         //return http 204 for delete or put/patch
@@ -57,6 +59,18 @@ public class ExpenseController {
     @GetMapping("/category/{category}")
     public ResponseEntity<List<Expense>> getExpensesByCategory(@PathVariable CategoryEnum category){
         List<Expense> expenses = expenseService.getExpensesByCategory(category);
+        return ResponseEntity.ok(expenses);
+    }
+
+    @GetMapping("/date/{date}")
+    public ResponseEntity<List<Expense>> getExpensesByDate(@PathVariable LocalDate date){
+        List<Expense> expenses = expenseService.getExpensesByDate(date);
+        return ResponseEntity.ok(expenses);
+    }
+
+    @GetMapping("/paymenth/{paymenth}")
+    public ResponseEntity<List<Expense>> getExpensesByPaymenth(@PathVariable PaymentMethodEnum paymentMethod){
+        List<Expense> expenses = expenseService.getExpensesByPaymentMethod(paymentMethod);
         return ResponseEntity.ok(expenses);
     }
 
