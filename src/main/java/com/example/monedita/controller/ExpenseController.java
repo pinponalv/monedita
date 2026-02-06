@@ -68,7 +68,7 @@ public class ExpenseController {
         return ResponseEntity.ok(expenses);
     }
 
-    @GetMapping("/paymenth/{paymenth}")
+    @GetMapping("/paymenth/{paymentMethod}")
     public ResponseEntity<List<Expense>> getExpensesByPaymenth(@PathVariable PaymentMethodEnum paymentMethod){
         List<Expense> expenses = expenseService.getExpensesByPaymentMethod(paymentMethod);
         return ResponseEntity.ok(expenses);

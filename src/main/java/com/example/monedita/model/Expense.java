@@ -14,6 +14,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -28,27 +29,24 @@ public class Expense {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "La descripcion debe ser obligatoria")
-    @Size(min = 5, max = 200, message = "Debe ser mayor a 5 caracteres y menor a 200")
     @Column(nullable = false)
     private String description;
 
-    @NotNull(message = "debe haber una cantidad")
+    //bigdecimal es para trabajar con dinero
+    //la columna nunca puede ser null
     @Column(nullable = false)
-    private double amount;
+    private BigDecimal amount;
 
-    @NotNull(message = "debe tener una categoria")
+
     @Column(nullable = false)
     //en la base de datos no se muestra como un numero, si no como la categoria dicha
     @Enumerated(EnumType.STRING)
     private CategoryEnum category;
 
-    @NotNull(message = "la fecha de gasto es obligatoria")
-    @PastOrPresent(message = "la fecha no puede ser futura")
     @Column(nullable = false)
     private LocalDate date;
 
-    @NotNull(message = "la categoria del gasto es obligatoria")
+
     @Column(nullable = false, name = "payment_method")
     //en la base de datos no se muestra como un numero, si no como metodo de pago
     @Enumerated(EnumType.STRING)
