@@ -1,0 +1,15 @@
+package com.example.monedita.service;
+
+import com.example.monedita.entity.UserSec;
+
+import java.util.List;
+import java.util.Optional;
+
+public interface IUserService {
+    List<UserSec> findAll();
+    Optional<UserSec> findById(Long id);
+    UserSec save(UserSec userSec);
+    void delete(UserSec userSec);
+    UserSec update(UserSec userSec);
+    String encriptPassword(String password);
+}

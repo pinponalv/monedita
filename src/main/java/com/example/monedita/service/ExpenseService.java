@@ -1,16 +1,15 @@
 package com.example.monedita.service;
 
 import com.example.monedita.exceptions.ExpenseNotFoundException;
-import com.example.monedita.model.Expense;
-import com.example.monedita.model.enums.CategoryEnum;
-import com.example.monedita.model.enums.PaymentMethodEnum;
+import com.example.monedita.entity.Expense;
+import com.example.monedita.entity.enums.CategoryEnum;
+import com.example.monedita.entity.enums.PaymentMethodEnum;
 import com.example.monedita.repository.IExpenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ExpenseService implements IExpenseService {

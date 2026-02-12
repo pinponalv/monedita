@@ -1,12 +1,8 @@
-package com.example.monedita.model;
+package com.example.monedita.entity;
 
-import com.example.monedita.model.enums.CategoryEnum;
-import com.example.monedita.model.enums.PaymentMethodEnum;
+import com.example.monedita.entity.enums.CategoryEnum;
+import com.example.monedita.entity.enums.PaymentMethodEnum;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PastOrPresent;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

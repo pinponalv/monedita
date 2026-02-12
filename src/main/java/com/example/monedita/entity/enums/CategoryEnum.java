@@ -1,4 +1,4 @@
-package com.example.monedita.model.enums;
+package com.example.monedita.entity.enums;
 
 public enum CategoryEnum {
 

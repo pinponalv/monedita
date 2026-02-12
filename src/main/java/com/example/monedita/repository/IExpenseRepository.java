@@ -1,8 +1,8 @@
 package com.example.monedita.repository;
 
-import com.example.monedita.model.Expense;
-import com.example.monedita.model.enums.CategoryEnum;
-import com.example.monedita.model.enums.PaymentMethodEnum;
+import com.example.monedita.entity.Expense;
+import com.example.monedita.entity.enums.CategoryEnum;
+import com.example.monedita.entity.enums.PaymentMethodEnum;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

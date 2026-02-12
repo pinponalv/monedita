@@ -1,7 +1,7 @@
 package com.example.monedita.dto;
 
-import com.example.monedita.model.enums.CategoryEnum;
-import com.example.monedita.model.enums.PaymentMethodEnum;
+import com.example.monedita.entity.enums.CategoryEnum;
+import com.example.monedita.entity.enums.PaymentMethodEnum;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
