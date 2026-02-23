@@ -29,7 +29,6 @@ public class PermissionController {
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN') and hasPermission('CREATE')")
     public ResponseEntity<Permission> createPermission(@RequestBody Permission permission) {
         Permission newPermission = permissionService.save(permission);
         return ResponseEntity.ok(newPermission);

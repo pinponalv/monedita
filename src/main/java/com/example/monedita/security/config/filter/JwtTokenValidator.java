@@ -39,32 +39,36 @@ public class JwtTokenValidator extends OncePerRequestFilter {
 
         if(jwtToken != null){
 
-            //quitamos la palabra bearer que viene antes del token
-            //bearer MiTokenAqui2134190ASDMKASDL;AS
-            jwtToken = jwtToken.substring(7);
+            try {
+                //quitamos la palabra bearer que viene antes del token
+                //bearer MiTokenAqui2134190ASDMKASDL;AS
+                jwtToken = jwtToken.substring(7);
 
-            //validar que el token sea correcto
-            DecodedJWT decodedJWT = jwtUtils.verifyToken(jwtToken);
-            
-            //si el token es valido le permitimos el acceso
-            //traemos el usuario
-            String username = jwtUtils.getUsernameFromToken(decodedJWT);
-            //me devuele los authorities, claim del token, y lo pasamos a string
-            String authorities = jwtUtils.getSpecificClaim(decodedJWT, "authorities").asString();
+                //validar que el token sea correcto
+                DecodedJWT decodedJWT = jwtUtils.verifyToken(jwtToken);
+
+                //si el token es valido le permitimos el acceso
+                //traemos el usuario
+                String username = jwtUtils.getUsernameFromToken(decodedJWT);
+                //me devuele los authorities, claim del token, y lo pasamos a string
+                String authorities = jwtUtils.getSpecificClaim(decodedJWT, "authorities").asString();
 
 
-            //Lista de authoridades
-            //toma una cadena de caracteres separadas por comas y pasalo a una authorityList
-            Collection<? extends GrantedAuthority> authotiesList = AuthorityUtils.commaSeparatedStringToAuthorityList(authorities);
+                //Lista de authoridades
+                //toma una cadena de caracteres separadas por comas y pasalo a una authorityList
+                Collection<? extends GrantedAuthority> authotiesList = AuthorityUtils.commaSeparatedStringToAuthorityList(authorities);
 
-            //traemos nuestro security context holder actual, y lo guardo en la variable
-            SecurityContext context = SecurityContextHolder.getContext();
+                //traemos nuestro security context holder actual, y lo guardo en la variable
+                SecurityContext context = SecurityContextHolder.getContext();
 
-            //seteamos datos
-            //creamos la instancia de authentication y le pasamos el usuario, y la lista de permisos
-            Authentication authentication = new UsernamePasswordAuthenticationToken(username, null, authotiesList);
-            context.setAuthentication(authentication);
-            SecurityContextHolder.setContext(context);
+                //seteamos datos
+                //creamos la instancia de authentication y le pasamos el usuario, y la lista de permisos
+                Authentication authentication = new UsernamePasswordAuthenticationToken(username, null, authotiesList);
+                context.setAuthentication(authentication);
+                SecurityContextHolder.setContext(context);
+            }catch (Exception e){
+                SecurityContextHolder.clearContext();
+            }
 
         }
 

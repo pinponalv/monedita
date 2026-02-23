@@ -55,6 +55,9 @@ public class JwtUtils {
 
     //method for decoding
     public DecodedJWT verifyToken(String token){
+
+        System.out.println("TOKEN -> "+token);
+
         try {
             Algorithm algorithm = Algorithm.HMAC256(this.privateKey);
             JWTVerifier verifier = JWT.require(algorithm)
