@@ -17,7 +17,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/expenses")
-@PreAuthorize("authenticated()")
+@PreAuthorize("permitAll()")
+//@PreAuthorize("authenticated()")
+//Esto lo consume cualquier frontend
+@CrossOrigin(originPatterns = "*")
 public class ExpenseController {
 
     @Autowired

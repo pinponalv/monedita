@@ -19,9 +19,15 @@ public class ExpenseService implements IExpenseService {
 
     @Override
     public Expense createExpense(Expense expense) {
-        if(expense.getDate().isAfter(LocalDate.now())){
+
+        if (expense.getDate() == null) {
+            throw new IllegalArgumentException("Date is required");
+        }
+
+        if (expense.getDate().isAfter(LocalDate.now())) {
             throw new IllegalArgumentException("The expense date cannot be in the future");
         }
+
         return expenseRepository.save(expense);
     }
 
